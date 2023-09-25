@@ -1,0 +1,10 @@
+sudo: required
+services:
+ - docker
+
+
+before install:
+ - docker build -t al3v/docker-react -f Dockerfile.dev .
+
+script:
+ - docker run -e CI=true al3v/docker-react npm run test
