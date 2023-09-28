@@ -8,3 +8,16 @@ before install:
 
 script:
  - docker run -e CI=true al3v/docker-react npm run test -- --coverage
+
+deploy:
+ provider: elasticbeanstalk
+ region: "eu-central-1"
+ app: "alv-app"
+ env: "Alv-app-env"
+ bucket_name: "elasticbeanstalk-eu-central-1-882314386132"
+ bucket_path: "alv-app"
+ on:
+  branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
+
